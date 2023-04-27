@@ -1,1 +1,1 @@
-# E-COMMERCE WEBSITE USING MERN STACK
+# E-Commerce Website Using MERN Stack
