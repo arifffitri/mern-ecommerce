@@ -163,31 +163,31 @@ export default function OrderScreen() {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <div>
+    <div className="py-5 orderdetails-container">
       <Helmet>
         <title>Order {orderId}</title>
       </Helmet>
-      <h1 className="my-3">Order {orderId}</h1>
+      <h1 className="mb-3">Order {orderId}</h1>
       <Row>
         <Col md={8}>
           <Card className="mb-3">
             <Card.Body>
-              <Card.Title>Shipping</Card.Title>
+              <Card.Title>SHIPPING</Card.Title>
               <Card.Text>
                 <strong>Name:</strong> {order.shippingAddress.fullName} <br />
                 <strong>Address: </strong>
                 {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.postalCode}, {order.shippingAddress.country}
               </Card.Text>
-              {order.isDelivered ? <MessageBox variant="success">Delivered at {order.deliveredAt}</MessageBox> : <MessageBox variant="danger">Not Delivered</MessageBox>}
+              {order.isDelivered ? <MessageBox variant="success">Delivered at {order.deliveredAt.substring(0, 10)}</MessageBox> : <MessageBox variant="danger">Not Delivered</MessageBox>}
             </Card.Body>
           </Card>
           <Card className="mb-3">
             <Card.Body>
-              <Card.Title>Payment</Card.Title>
+              <Card.Title>PAYMENT</Card.Title>
               <Card.Text>
                 <strong>Method:</strong> {order.paymentMethod}
               </Card.Text>
-              {order.isPaid ? <MessageBox variant="success">Paid at {order.paidAt}</MessageBox> : <MessageBox variant="danger">Not Paid</MessageBox>}
+              {order.isPaid ? <MessageBox variant="success">Paid at {order.paidAt.substring(0, 10)}</MessageBox> : <MessageBox variant="danger">Not Paid</MessageBox>}
             </Card.Body>
           </Card>
           <Card className="mb-3">
@@ -198,9 +198,10 @@ export default function OrderScreen() {
                   <ListGroup.Item key={item._id}>
                     <Row className="align-items-center">
                       <Col md={6}>
-                        <img src={item.image} alt={item.name} className="img-fluid rounded img-thumbnail"></img>
-                        {"  "}
-                        <Link to={`/product/${item.slug}`}>{item.name}</Link>
+                        <Link to={`/product/${item.slug}`} className="text-decoration-none text-body">
+                          <img src={item.image} alt={item.name} className="img-fluid rounded img-thumbnail me-5"></img>
+                          {item.name}
+                        </Link>
                       </Col>
                       <Col md={3}>
                         <span>{item.quantity}</span>

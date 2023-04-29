@@ -227,6 +227,20 @@ main {
 
 /* END OF PROFILE SCREEN */
 
+/* ORDER DETAILS SCREEN */
+
+@media (max-width: 700px) {
+  .orderdetails-container {
+    margin: auto;
+  }
+
+  .orderdetails-container a {
+    margin: 0;
+  }
+}
+
+/* END OF ORDER DETAILS SCREEN */
+
 .img-large {
   max-width: 100%;
 }
