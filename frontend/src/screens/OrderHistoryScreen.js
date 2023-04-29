@@ -51,11 +51,11 @@ export default function OrderHistoryScreen() {
   }, [userInfo]);
 
   return (
-    <div>
+    <div className="py-5">
       <Helmet>
         <title>Order History</title>
       </Helmet>
-      <h1>Order History</h1>
+      <h1 className="mb-3">Order History</h1>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (

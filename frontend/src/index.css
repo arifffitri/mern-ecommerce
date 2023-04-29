@@ -201,7 +201,7 @@ main {
 
 .signup-small-container {
   max-width: 600px;
-  padding: 8rem 0;
+  padding: 10rem 0;
 }
 
 .signup-small-container h1 {
@@ -217,6 +217,15 @@ main {
 }
 
 /* END OF SIGNUP SCREEN */
+
+/* PROFILE SCREEN */
+
+.profile-small-container {
+  max-width: 600px;
+  padding: 8rem 0;
+}
+
+/* END OF PROFILE SCREEN */
 
 .img-large {
   max-width: 100%;
