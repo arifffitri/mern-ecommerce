@@ -229,13 +229,22 @@ main {
 
 /* ORDER DETAILS SCREEN */
 
+.orderscreen-container {
+  max-width: 75%;
+  padding: 3rem 0;
+}
+
+.orderscreen-container img {
+  max-width: 100px;
+}
+
 @media (max-width: 700px) {
-  .orderdetails-container {
-    margin: auto;
+  .orderscreen-container {
+    max-width: 95%;
   }
 
-  .orderdetails-container a {
-    margin: 0;
+  .orderscreen-container h1 {
+    font-size: 1.5rem;
   }
 }
 

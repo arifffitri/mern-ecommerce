@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useReducer } from "react";
 import { usePayPalScriptReducer, PayPalButtons } from "@paypal/react-paypal-js";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -163,114 +164,118 @@ export default function OrderScreen() {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <div className="py-5 orderdetails-container">
-      <Helmet>
-        <title>Order {orderId}</title>
-      </Helmet>
-      <h1 className="mb-3">Order {orderId}</h1>
-      <Row>
-        <Col md={8}>
-          <Card className="mb-3">
-            <Card.Body>
-              <Card.Title>SHIPPING</Card.Title>
-              <Card.Text>
-                <strong>Name:</strong> {order.shippingAddress.fullName} <br />
-                <strong>Address: </strong>
-                {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.postalCode}, {order.shippingAddress.country}
-              </Card.Text>
-              {order.isDelivered ? <MessageBox variant="success">Delivered at {order.deliveredAt.substring(0, 10)}</MessageBox> : <MessageBox variant="danger">Not Delivered</MessageBox>}
-            </Card.Body>
-          </Card>
-          <Card className="mb-3">
-            <Card.Body>
-              <Card.Title>PAYMENT</Card.Title>
-              <Card.Text>
-                <strong>Method:</strong> {order.paymentMethod}
-              </Card.Text>
-              {order.isPaid ? <MessageBox variant="success">Paid at {order.paidAt.substring(0, 10)}</MessageBox> : <MessageBox variant="danger">Not Paid</MessageBox>}
-            </Card.Body>
-          </Card>
-          <Card className="mb-3">
-            <Card.Body>
-              <Card.Title>Items</Card.Title>
-              <ListGroup variant="flush">
-                {order.orderItems.map((item) => (
-                  <ListGroup.Item key={item._id}>
-                    <Row className="align-items-center">
-                      <Col md={6}>
-                        <Link to={`/product/${item.slug}`} className="text-decoration-none text-body">
-                          <img src={item.image} alt={item.name} className="img-fluid rounded img-thumbnail me-5"></img>
-                          {item.name}
-                        </Link>
+    <Container className="orderscreen-container">
+      <div>
+        <Helmet>
+          <title>Order {orderId}</title>
+        </Helmet>
+        <h1 className="mb-3 text-bold">Order {orderId}</h1>
+
+        {/* SHIPPING INFORMATION CONTAINER */}
+        <Card className="mb-3">
+          <Card.Body>
+            <Card.Title className="text-bold pt-3 px-2">Shipping Information</Card.Title>
+            <Card.Text>
+              <Row className="align-items-center py-3 px-2">
+                <Col className="text-bold">Name:</Col>
+                <Col md={10}>{order.shippingAddress.fullName}</Col>
+              </Row>
+              <Row className="align-items-center py-3 px-2">
+                <Col className="text-bold">Address:</Col>
+                <Col md={10}>
+                  {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.postalCode}, {order.shippingAddress.country}
+                </Col>
+              </Row>
+            </Card.Text>
+            {order.isPaid ? <MessageBox variant="success">Paid at {order.paidAt.substring(0, 10)}</MessageBox> : <MessageBox variant="danger">Not Paid</MessageBox>}
+            {order.isDelivered ? <MessageBox variant="success">Delivered at {order.deliveredAt.substring(0, 10)}</MessageBox> : <MessageBox variant="danger">Not Delivered</MessageBox>}
+          </Card.Body>
+        </Card>
+        {/* END OF SHIPPING INFORMATION CONTAINER */}
+
+        {/* ITEMS INFORMATION & ORDER DETAILS */}
+        <Card className="mb-3">
+          <Card.Body>
+            <Card.Title className="text-bold pt-3 px-2">Items</Card.Title>
+            <ListGroup variant="flush">
+              {order.orderItems.map((item) => (
+                <ListGroup.Item key={item._id}>
+                  <Link to={`/product/${item.slug}`} className="text-decoration-none text-body">
+                    <Row className="align-items-center py-3 px-2">
+                      <Col xs={6} md={4} lg={2} className="text-start">
+                        <img src={item.image} alt={item.name} className="img-fluid rounded"></img>
                       </Col>
-                      <Col md={3}>
-                        <span>{item.quantity}</span>
+                      <Col xs={6} md={4} lg={8}>
+                        <Row>{item.name}</Row>
+                        <Row>x{item.quantity}</Row>
                       </Col>
-                      <Col md={3}>RM{item.price}</Col>
+                      <Col className="text-end" xs={12} md={4} lg={2}>
+                        RM{item.price.toFixed(2)}
+                      </Col>
                     </Row>
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={4}>
-          <Card className="mb-3">
-            <Card.Body>
-              <Card.Title>Order Summary</Card.Title>
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Items</Col>
-                    <Col>RM{order.itemsPrice.toFixed(2)}</Col>
-                  </Row>
+                  </Link>
                 </ListGroup.Item>
+              ))}
+            </ListGroup>
+            <ListGroup variant="flush" className="text-end">
+              <ListGroup.Item>
+                <Row>
+                  <Col>Merchandise Subtotal</Col>
+                  <Col> RM{order.itemsPrice.toFixed(2)}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Shipping Fee</Col>
+                  <Col>RM{order.shippingPrice.toFixed(2)}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Tax</Col>
+                  <Col>RM{order.taxPrice.toFixed(2)}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Order Total</Col>
+                  <Col className="text-bold h4">RM{order.totalPrice.toFixed(2)}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Payment Method</Col>
+                  <Col>{order.paymentMethod}</Col>
+                </Row>
+              </ListGroup.Item>
+              {/* when 'Order is Paid', PayPal button will disappear */}
+              {!order.isPaid && (
                 <ListGroup.Item>
-                  <Row>
-                    <Col>Shipping</Col>
-                    <Col>RM{order.shippingPrice.toFixed(2)}</Col>
-                  </Row>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Tax</Col>
-                    <Col>RM{order.taxPrice.toFixed(2)}</Col>
-                  </Row>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Order Total</Col>
-                    <Col>RM{order.totalPrice.toFixed(2)}</Col>
-                  </Row>
-                </ListGroup.Item>
-                {/* when 'Order is Paid', PayPal button will disappear */}
-                {!order.isPaid && (
-                  <ListGroup.Item>
-                    {isPending ? (
-                      <LoadingBox />
-                    ) : (
-                      <div>
-                        <PayPalButtons createOrder={createOrder} onApprove={onApprove} onError={onError}></PayPalButtons>
-                      </div>
-                    )}
-                    {loadingPay && <LoadingBox></LoadingBox>}
-                  </ListGroup.Item>
-                )}
-                {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
-                  <ListGroup.Item>
-                    {loadingDeliver && <LoadingBox></LoadingBox>}
-                    <div className="d-grid">
-                      <Button type="button" onClick={deliverOrderHandler}>
-                        Deliver Order
-                      </Button>
+                  {isPending ? (
+                    <LoadingBox />
+                  ) : (
+                    <div>
+                      <PayPalButtons createOrder={createOrder} onApprove={onApprove} onError={onError}></PayPalButtons>
                     </div>
-                  </ListGroup.Item>
-                )}
-              </ListGroup>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </div>
+                  )}
+                  {loadingPay && <LoadingBox></LoadingBox>}
+                </ListGroup.Item>
+              )}
+              {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                <ListGroup.Item>
+                  {loadingDeliver && <LoadingBox></LoadingBox>}
+                  <div className="d-grid">
+                    <Button type="button" onClick={deliverOrderHandler}>
+                      Deliver Order
+                    </Button>
+                  </div>
+                </ListGroup.Item>
+              )}
+            </ListGroup>
+          </Card.Body>
+        </Card>
+        {/* END OF ITEMS INFORMATION & ORDER DETAILS */}
+      </div>
+    </Container>
   );
 }
