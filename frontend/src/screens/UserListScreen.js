@@ -82,7 +82,7 @@ export default function OrderListScreen() {
   return (
     <div className="admin-pages">
       <Helmet>
-        <title>Users</title>
+        <title className="text-bold">Users</title>
       </Helmet>
       <h1>Users</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}

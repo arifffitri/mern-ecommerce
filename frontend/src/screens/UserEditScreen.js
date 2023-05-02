@@ -96,7 +96,7 @@ export default function UserEditScreen() {
       <Helmet>
         <title>Edit User ${userId}</title>
       </Helmet>
-      <h1>Edit User {userId}</h1>
+      <h1 className="text-bold">Edit User {userId}</h1>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (

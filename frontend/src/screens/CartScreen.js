@@ -44,7 +44,7 @@ export default function CartScreen() {
       <Helmet>
         <title>Shopping Cart</title>
       </Helmet>
-      <h1 className="mb-3">Shopping Cart</h1>
+      <h1 className="mb-3  text-bold">Shopping Cart</h1>
       <Row>
         <Col md={8}>
           {cartItems.length === 0 ? (

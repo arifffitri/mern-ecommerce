@@ -120,7 +120,7 @@ export default function ProductListScreen() {
     <div className="admin-pages">
       <Row>
         <Col>
-          <h1>Products</h1>
+          <h1 className="text-bold">Products</h1>
         </Col>
         <Col className="col text-end">
           <div>

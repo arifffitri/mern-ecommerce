@@ -54,7 +54,7 @@ export default function DashboardScreen() {
 
   return (
     <div className="admin-pages">
-      <h1>Dashboard</h1>
+      <h1 className="text-bold">Dashboard</h1>
       {loading ? (
         <LoadingBox />
       ) : error ? (
