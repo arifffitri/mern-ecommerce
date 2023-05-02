@@ -40,11 +40,11 @@ export default function CartScreen() {
   };
 
   return (
-    <div>
+    <div className="py-5">
       <Helmet>
         <title>Shopping Cart</title>
       </Helmet>
-      <h1>Shopping Cart</h1>
+      <h1 className="mb-3">Shopping Cart</h1>
       <Row>
         <Col md={8}>
           {cartItems.length === 0 ? (
@@ -52,16 +52,18 @@ export default function CartScreen() {
               Cart is empty. <Link to="/">Go Shopping</Link>
             </MessageBox>
           ) : (
-            <ListGroup>
+            <ListGroup className="mb-3">
               {cartItems.map((item) => (
                 <ListGroup.Item key={item._id}>
                   <Row className="align-items-center">
-                    <Col md={4}>
-                      <img src={item.image} alt={item.name} className="img-fluid rounded img-thumbnail"></img>
+                    <Col xs={12} md={4} lg={4} className="text-start">
+                      <img src={item.image} alt={item.name} className="img-fluid rounded img-thumbnail me-3"></img>
                       {"  "}
-                      <Link to={`/product/${item.slug}`}>{item.name}</Link>
+                      <Link to={`/product/${item.slug}`} className="text-decoration-none text-body">
+                        {item.name}
+                      </Link>
                     </Col>
-                    <Col md={3}>
+                    <Col xs={5} md={4} lg={3} className="my-3">
                       <Button variant="light" onClick={() => updateCartHandler(item, item.quantity - 1)} disabled={item.quantity === 1}>
                         <i className="fas fa-minus-circle"></i>
                       </Button>{" "}
@@ -70,8 +72,10 @@ export default function CartScreen() {
                         <i className="fas fa-plus-circle"></i>
                       </Button>
                     </Col>
-                    <Col md={3}>RM{item.price}</Col>
-                    <Col md={2}>
+                    <Col xs={4} md={2} lg={3}>
+                      RM{item.price}
+                    </Col>
+                    <Col xs={3} md={2} lg={2}>
                       <Button variant="light" onClick={() => removeItemHandler(item)}>
                         <i className="fas fa-trash"></i>
                       </Button>
