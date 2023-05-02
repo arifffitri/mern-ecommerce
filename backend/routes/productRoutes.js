@@ -111,7 +111,7 @@ productRouter.post(
 
 // route for search/filter
 // PAGE_SIZE = want to display how many product per page
-const PAGE_SIZE = 3;
+const PAGE_SIZE = 6;
 productRouter.get(
   "/admin",
   isAuth,
