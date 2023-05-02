@@ -92,7 +92,7 @@ export default function UserEditScreen() {
     }
   };
   return (
-    <Container className="small-container">
+    <Container className="small-container admin-pages">
       <Helmet>
         <title>Edit User ${userId}</title>
       </Helmet>

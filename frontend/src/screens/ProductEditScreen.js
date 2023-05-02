@@ -138,7 +138,7 @@ export default function ProductEditScreen() {
   };
 
   return (
-    <Container className="small-container">
+    <Container className="small-container admin-pages">
       <Helmet>
         <title>Edit Product ${productId}</title>
       </Helmet>

@@ -117,7 +117,7 @@ export default function ProductListScreen() {
   };
 
   return (
-    <div>
+    <div className="admin-pages">
       <Row>
         <Col>
           <h1>Products</h1>

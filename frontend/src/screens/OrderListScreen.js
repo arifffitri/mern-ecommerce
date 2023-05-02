@@ -80,7 +80,7 @@ export default function OrderListScreen() {
   };
 
   return (
-    <div>
+    <div className="admin-pages">
       <Helmet>
         <title>Orders</title>
       </Helmet>

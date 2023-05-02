@@ -621,3 +621,19 @@ hr {
 }
 
 /* END OF FOOTER */
+
+/* ADMIN PAGES (DASHBOARD, PRODUCTS, ORDERS, USERS) */
+
+.admin-pages {
+  padding: 3rem 0;
+}
+
+.admin-pages h1 {
+  padding-bottom: 1rem;
+}
+
+.admin-pages h2 {
+  padding-top: 1rem;
+}
+
+/* END OF ADMIN PAGES (DASHBOARD, PRODUCTS, ORDERS, USERS) */
