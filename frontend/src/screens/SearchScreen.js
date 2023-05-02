@@ -126,13 +126,13 @@ export default function SearchScreen() {
   };
 
   return (
-    <div className="search-pages">
+    <div className="py-5">
       <Helmet>
         <title>Search Products</title>
       </Helmet>
       <Row>
         <Col md={3}>
-          <h3>Department</h3>
+          <h3 className="pb-2">Department</h3>
           <div>
             <ul>
               <li>
@@ -150,7 +150,7 @@ export default function SearchScreen() {
             </ul>
           </div>
           <div>
-            <h3>Price</h3>
+            <h3 className="py-2">Price</h3>
             <ul>
               <li>
                 <Link className={"all" === price ? "text-bold" : ""} to={getFilterUrl({ category: "all" })}>
@@ -167,7 +167,7 @@ export default function SearchScreen() {
             </ul>
           </div>
           <div>
-            <h3>Avg. Customer Review</h3>
+            <h3 className="py-2">Avg. Customer Review</h3>
             <ul>
               {ratings.map((r) => (
                 <li key={r.name}>
@@ -191,7 +191,7 @@ export default function SearchScreen() {
             <MessageBox variant="danger">{error}</MessageBox>
           ) : (
             <>
-              <Row className="justify-content-between mb-3">
+              <Row className="justify-content-between mb-3 ">
                 <Col md={9}>
                   <div>
                     {countProducts === 0 ? "No" : countProducts} Results
