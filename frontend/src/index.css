@@ -471,6 +471,20 @@ section.hero {
 
 /* END OF CATEGORY */
 
+/* SEARCH SCREEN */
+.search-pages {
+  padding: 3rem 0;
+}
+
+.search-pages h3 {
+  padding: 1rem 0;
+}
+
+.search-pages a {
+  text-decoration: none;
+}
+/* END OF SEARCH SCREEN */
+
 /* FOOTER */
 
 .section__padding {

@@ -126,7 +126,7 @@ export default function SearchScreen() {
   };
 
   return (
-    <div>
+    <div className="search-pages">
       <Helmet>
         <title>Search Products</title>
       </Helmet>
@@ -206,7 +206,7 @@ export default function SearchScreen() {
                     ) : null}
                   </div>
                 </Col>
-                <Col className="text-end">
+                <Col className="text-end mb-3">
                   Sort by{" "}
                   <select
                     value={order}
