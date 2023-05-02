@@ -69,7 +69,7 @@ const FooterSection = () => {
 
         <div className="sb__footer-below">
           <div className="sb__footer-copyright">
-            <p>@{new Date().getFullYear()} Codeline. All right reserved.</p>
+            <p>@{new Date().getFullYear()} ZORO Malaysia. All right reserved.</p>
           </div>
           <div className="sb__footer-below-links">
             <a href="/terms">
