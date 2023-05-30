@@ -1,5 +1,7 @@
 # E-Commerce Website Using MERN Stack
 
+![Screenshot 2023-05-31 013313](https://github.com/arifffitri/mern-ecommerce/assets/125245878/643a3c1e-f907-44a5-9fa4-42800149d002)
+
 ## MERN ZORO
 
 Build a fully-functional e-commerce website using MERN stack (MongoDB, ExpressJS, React and Node.JS).
