@@ -6,10 +6,10 @@ Build a fully-functional e-commerce website using MERN stack (MongoDB, ExpressJS
 
 ### Skills Involved
 
-HTML5 and CSS3: Semantic Elements, CSS Grid, Flexbox
-React: Components, Props, Events, Hooks, Router, Axios
-Context API: Store, Reducers, Actions
-Node & Express: Web API, Body Parser, File Upload, JWT
-MongoDB: Mongoose, Aggregation
-Development: Git, Github
-Deployment: Heroku (Temporarily)
+1.  HTML5 and CSS3: Semantic Elements, CSS Grid, Flexbox
+2.  React: Components, Props, Events, Hooks, Router, Axios
+3.  Context API: Store, Reducers, Actions
+4.  Node & Express: Web API, Body Parser, File Upload, JWT
+5.  MongoDB: Mongoose, Aggregation
+6.  Development: Git, Github
+7.  Deployment: Heroku (Temporarily)
